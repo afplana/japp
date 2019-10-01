@@ -1,0 +1,15 @@
+Reading the Apache Access Logs#
+There can be quite a bit of information stored in each apache log. Therefore, upon first seeing all of the data within an access file you may quickly get overwhelmed if you aren’t familiar with that each section means. Let’s take an example that uses the common Apache log format: LogFormat "%h %l %u %t \"%r\" %>s %b" common.
+
+Now let’s break down what each section of that log means.
+
+%h - The IP address of the client.
+%l - The identity of the client determined by identd on the client’s machine. Will return a hyphen (-) if this information is not available.
+%u - The userid of the client if the request was authenticated.
+%t - The time that the request was received.
+\"%r\" - The request line that includes the HTTP method used, the requested resource path, and the HTTP protocol that the client used.
+%>s - The status code that the server sends back to the client.
+%b - The size of the object requested.
+If a request was made to a website using the above-mentioned log format the resulting log would look similar to the following.
+
+127.0.0.1 - peter [9/Feb/2017:10:34:12 -0700] "GET /main.java.com.sample-image.png HTTP/2" 200 1479
