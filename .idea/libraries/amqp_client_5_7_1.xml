@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="amqp-client-5.7.1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/amqp-client-5.7.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/hamcrest-core-1.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/junit-4.12.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/slf4j-api-1.7.26.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/slf4j-simple-1.7.26.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
