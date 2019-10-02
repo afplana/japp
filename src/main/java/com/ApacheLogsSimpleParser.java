@@ -4,7 +4,11 @@ import com.examples.rabbitmq.pubsub.PublishLog;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.util.*;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.concurrent.TimeoutException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
@@ -76,7 +80,18 @@ public class ApacheLogsSimpleParser {
         System.out.println();
         servers
                 .forEach((ip, responseTime) ->
-                        PublishLog.main(new String[]{"[!]","Server IP: " +ip, "Response Time: " +responseTime})
+                        {
+                            try {
+                                PublishLog.main(new String[]{"[!]","Server IP: " +ip, "Response Time: " +responseTime});
+                            } catch (Exception ex) {
+                                if(ex instanceof NullPointerException)
+                                    logger.log(Level.WARNING, "Connection with broker failed...");
+                                else if (ex instanceof TimeoutException)
+                                    logger.log(Level.WARNING, "Server not responding...");
+                                else
+                                    logger.log(Level.SEVERE, ex.getLocalizedMessage());
+                            }
+                        }
                 );
 
     }

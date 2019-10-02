@@ -5,10 +5,7 @@ import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.DeliverCallback;
 
-import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.util.concurrent.TimeoutException;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ConsumeLogs {
@@ -16,12 +13,12 @@ public class ConsumeLogs {
     private static final Logger logger = Logger.getLogger(ConsumeLogs.class.getName());
     private static final String EXCHANGE_NAME = "logs";
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost("localhost");
 
-        try (Connection connection = factory.newConnection()) {
+        Connection connection = factory.newConnection();
             assert connection != null;
             Channel channel = connection.createChannel();
 
@@ -37,10 +34,6 @@ public class ConsumeLogs {
             };
             channel.basicConsume(queueName, true, deliverCallback, consumerTag -> {
             });
-
-        } catch (IOException | TimeoutException e) {
-            logger.log(Level.WARNING, e.getMessage());
-        }
     }
 
 }
