@@ -8,6 +8,7 @@ import com.rabbitmq.client.MessageProperties;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.util.Scanner;
 import java.util.concurrent.TimeoutException;
 import java.util.logging.Logger;
 
@@ -29,13 +30,17 @@ public class Sender {
 
             channel.queueDeclare(TASK_QUEUE_NAME, true, false, false, null);
 
-            String msg = String.join(" ", args);
+            Scanner scanner = new Scanner(System.in);
+            logger.info("For exit the program enter CTRL+D \nPlease enter msg:");
+            while(scanner.hasNextLine()) {
+                String msg = scanner.nextLine();
 
-            channel.basicPublish("", TASK_QUEUE_NAME,
-                    MessageProperties.PERSISTENT_TEXT_PLAIN, msg.getBytes(StandardCharsets.UTF_8));
-
-            logger.info("[x] Sent '" + msg + "'");
-
+                channel.basicPublish("", TASK_QUEUE_NAME,
+                        MessageProperties.PERSISTENT_TEXT_PLAIN, msg.getBytes(StandardCharsets.UTF_8));
+                logger.info("[x] Message sent '" + msg + "'");
+                logger.info("For exit the program enter CTRL+D \nPlease enter msg:");
+            }
+            scanner.close();
         } catch (IOException | TimeoutException e) {
             logger.info(e.getMessage());
         }
