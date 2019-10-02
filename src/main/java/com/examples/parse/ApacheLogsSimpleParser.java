@@ -1,4 +1,4 @@
-package com;
+package com.examples.parse;
 
 import com.examples.rabbitmq.pubsub.PublishLog;
 
@@ -22,7 +22,7 @@ public class ApacheLogsSimpleParser {
             "\\[([\\w:/]+\\s[+\\-]\\d{4})] \"(\\S+)" +
             " (\\S+)\\s*(\\S+)?\\s*\" (\\d{3}) (\\S+)";
 
-    static Map<String, Integer> retrieveServers(){
+    public static Map<String, Integer> retrieveServers(){
         return servers;
     }
 
