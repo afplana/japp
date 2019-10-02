@@ -7,7 +7,6 @@ import com.rabbitmq.client.MessageProperties;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.util.Scanner;
 import java.util.concurrent.TimeoutException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,26 +25,14 @@ public class PublishLog {
             Channel channel = connection.createChannel();
             channel.exchangeDeclare(EXCHANGE_NAME, "fanout");
 
-            Scanner scanner = new Scanner(System.in);
-            logger.info("\nKill the program by pressing CTRL+D\n[!] Enter new Message: ");
+            String msg = (args.length < 1) ? "info: Log Report to short" : String.join(" ", args);
 
-            while(scanner.hasNextLine()){
-                String msg = scanner.nextLine();
-                channel.basicPublish(EXCHANGE_NAME, "", MessageProperties.BASIC, msg.getBytes(StandardCharsets.UTF_8));
-                logger.info("[X] Message sent successfully: '" + msg + "'");
-                logger.info("\nKill the program by pressing CTRL+D\n[!] Enter new Message: ");
-            }
+
+            channel.basicPublish(EXCHANGE_NAME, "", MessageProperties.BASIC, msg.getBytes(StandardCharsets.UTF_8));
+            logger.info("[X] Message sent: '" + msg + "'");
 
         } catch (IOException | TimeoutException e){
             logger.log(Level.WARNING, e.getMessage());
-            logger.info("[*] Attempt to restart service...");
-            try {
-                Thread.sleep(10000);
-                main(new String[]{"restarted"});
-            } catch (InterruptedException ex) {
-                logger.log(Level.WARNING, ex.getMessage());
-                Thread.currentThread().interrupt();
-            }
         }
     }
 }

@@ -1,5 +1,7 @@
 package com;
 
+import com.examples.rabbitmq.pubsub.PublishLog;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.*;
@@ -71,5 +73,11 @@ public class ApacheLogsSimpleParser {
         logger.info("Provide Apache Logs route: ");
         startReadLog(scanner.nextLine());
         findFastResponse();
+        System.out.println();
+        servers
+                .forEach((ip, responseTime) ->
+                        PublishLog.main(new String[]{"[!]","Server IP: " +ip, "Response Time: " +responseTime})
+                );
+
     }
 }
