@@ -1,6 +1,6 @@
 package com.examples;
 
-import com.examples.rabbitmq.pubsub.direct.ConsumeDirect;
+import ao.jfpack.rabbitmq.pubsub.direct.ConsumeDirect;
 
 public class Application {
     public static void main(String[] args) {
