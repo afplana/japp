@@ -5,7 +5,6 @@ import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.DeliverCallback;
 
-import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.logging.Logger;
 
@@ -37,16 +36,4 @@ public class ConsumeLogs {
         channel.basicConsume(queueName, true, deliverCallback, consumerTag -> {
         });
     }
-
-    private static void consumeDirectExchange(Connection connection, String[] args) throws IOException {
-        assert connection != null;
-        Channel channel = connection.createChannel();
-
-
-    }
-
-    private static void consumeFanoutExchange(Connection connection) throws IOException {
-
-    }
-
 }

@@ -26,15 +26,13 @@ public class ConsumeDirect implements Runnable {
 
         channel.exchangeDeclare(DIRECT_EXCHANGE_NAME, "direct");
         String queueName = channel.queueDeclare().getQueue();
-        channel.queueBind(queueName, DIRECT_EXCHANGE_NAME, "");
-
-        channel.queueBind(queueName, DIRECT_EXCHANGE_NAME, ApacheLog.Method.GET.name());
+        channel.queueBind(queueName, DIRECT_EXCHANGE_NAME, ApacheLog.Method.GET.name().toLowerCase());
 
         logger.info("[*] Waiting for messages for direct exchange. To exit press CTRL+D");
 
         DeliverCallback deliverCallback = (consumerTag, delivery) -> {
             String message = new String(delivery.getBody(), StandardCharsets.UTF_8);
-            logger.info(" [x] Received: '" + delivery.getEnvelope().getRoutingKey() + message + "'");
+            logger.info(" [x] Received: '\nRouting key: " + delivery.getEnvelope().getRoutingKey() + " ->" + message + "'");
         };
 
         channel.basicConsume(queueName, true, deliverCallback, consumerTag -> {

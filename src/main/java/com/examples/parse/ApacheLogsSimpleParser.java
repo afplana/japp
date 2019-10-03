@@ -1,6 +1,7 @@
 package com.examples.parse;
 
 import com.examples.rabbitmq.pubsub.PublishLog;
+import com.examples.rabbitmq.pubsub.direct.PublishDirect;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -94,8 +95,15 @@ public class ApacheLogsSimpleParser {
         APACHE_LOGS
                 .forEach(apacheLog ->
                         {
+
                             try {
                                 PublishLog.main(new String[]{"[!]", "Server IP: " + apacheLog.ip, "Response Time: " + apacheLog.responseTime});
+                                PublishDirect.publishDirect(
+                                        APACHE_LOGS.stream()
+                                        .filter(apacheLog1 -> apacheLog1.method.name().equalsIgnoreCase("get"))
+                                        .collect(Collectors.toList())
+                                );
+
                             } catch (Exception ex) {
                                 if (ex instanceof NullPointerException)
                                     logger.log(Level.WARNING, "Connection with broker failed...");
