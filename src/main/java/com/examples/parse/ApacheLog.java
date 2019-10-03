@@ -2,7 +2,7 @@ package com.examples.parse;
 
 import java.io.Serializable;
 
-class ApacheLog implements Serializable {
+public class ApacheLog implements Serializable {
 
     String ip;
     String date;
@@ -19,5 +19,5 @@ class ApacheLog implements Serializable {
     }
 
 
-    enum Method {GET, POST, PUT, DELETE, PATCH}
+    public enum Method {GET, POST, PUT, DELETE, PATCH}
 }
