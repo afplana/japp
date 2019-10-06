@@ -35,7 +35,7 @@ public class ApacheLogsSimpleParser {
                 APACHE_LOGS.add(new ApacheLog(
                         matcher.group(1),
                         matcher.group(4),
-                        ApacheLog.Method.valueOf(matcher.group(5)),
+                        matcher.group(5),
                         parseInt(matcher.group(8)),
                         parseInt(matcher.group(9))
                 ));
@@ -66,7 +66,7 @@ public class ApacheLogsSimpleParser {
 
     private static List<ApacheLog> findFastResponse() {
         OptionalInt minResponseTime = APACHE_LOGS.stream().mapToInt(log -> log.responseTime).min();
-        return !minResponseTime.isPresent() ?
+        return minResponseTime.isEmpty() ?
                 Collections.emptyList() :
                 APACHE_LOGS.stream()
                         .filter(apacheLog -> apacheLog.responseTime <= minResponseTime.getAsInt())

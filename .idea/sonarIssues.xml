@@ -33,6 +33,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/aparser/src/main/java/ao/jfpack/parse/ApacheLog.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/aparser/src/main/java/ao/jfpack/parse/ApacheLogsSimpleParser.java">
           <value>
             <set />
