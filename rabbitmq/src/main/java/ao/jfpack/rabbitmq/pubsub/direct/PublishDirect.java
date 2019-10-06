@@ -1,32 +1,35 @@
 package ao.jfpack.rabbitmq.pubsub.direct;
 
-import ao.jfpack.parse.ApacheLog;
-import ao.jfpack.parse.ApacheLogsSimpleParser;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
 
-import java.util.List;
+import java.io.IOException;
+import java.util.concurrent.TimeoutException;
 import java.util.logging.Logger;
 
-public class PublishDirect {
+public class PublishDirect<T> {
 
     private static Logger logger = Logger.getLogger(PublishDirect.class.getName());
-    private static final String DIRECT_EXCHANGE_NAME = "direct_logs";
+    private static final String DIRECT_EXCHANGE_NAME = "direct_book";
 
 
-    public static void publishDirect(List<ApacheLog> apacheLogs) throws Exception {
+    public void publishDirect(T t) throws IOException, TimeoutException {
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost("localhost");
-        Connection connection = factory.newConnection();
-        Channel channel = connection.createChannel();
 
-        channel.exchangeDeclare(DIRECT_EXCHANGE_NAME, "direct");
-        channel.basicPublish(DIRECT_EXCHANGE_NAME, ApacheLog.Method.GET.name().toLowerCase(), null, apacheLogs.toString().getBytes());
-        logger.info("[!] Message sent through channel " +ApacheLog.Method.GET.name().toLowerCase()+ " -> " + apacheLogs.toString());
-    }
+        try (Connection connection = factory.newConnection();
+             Channel channel = connection.createChannel()) {
+            channel.exchangeDeclare(DIRECT_EXCHANGE_NAME, "direct");
 
-    public static void main(String[] args) throws Exception {
-        publishDirect(ApacheLogsSimpleParser.retrieveApacheLogs());
+            ObjectMapper mapper = new ObjectMapper()
+                    .disable(SerializationFeature.FAIL_ON_EMPTY_BEANS);
+
+            String tAsString = mapper.writeValueAsString(t);
+            channel.basicPublish(DIRECT_EXCHANGE_NAME, "book", null, tAsString.getBytes());
+            logger.info("[!] Message sent through channel <get> -> " + tAsString);
+        }
     }
 }

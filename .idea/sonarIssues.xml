@@ -58,6 +58,61 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/rabbitmq/src/main/java/ao/jfpack/App.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/rabbitmq/src/main/java/ao/jfpack/rabbitmq/Book.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/rabbitmq/src/main/java/ao/jfpack/rabbitmq/User.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/rabbitmq/src/main/java/ao/jfpack/rabbitmq/mockObjects/Book.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/rabbitmq/src/main/java/ao/jfpack/rabbitmq/mockObjects/User.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/rabbitmq/src/main/java/ao/jfpack/rabbitmq/mockob/Book.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/rabbitmq/src/main/java/ao/jfpack/rabbitmq/mockob/User.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/rabbitmq/src/main/java/ao/jfpack/rabbitmq/pubsub/direct/ConsumeDirect.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/rabbitmq/src/main/java/ao/jfpack/rabbitmq/pubsub/direct/ConsumeDirectBook.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/rabbitmq/src/main/java/ao/jfpack/rabbitmq/pubsub/direct/PublishDirect.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/rabbitmq/src/main/java/ao/jfpack/rabbitmq/pubsub/direct/PublisherB.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/main/java/sample/Main.java">
           <value>
             <set />
