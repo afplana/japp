@@ -16,14 +16,16 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="aparser" />
         <module name="rabbitmq" />
+        <module name="aparser" />
+        <module name="wsdlex" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="11">
       <module name="aparser" target="11" />
       <module name="japp" target="1.5" />
       <module name="rabbitmq" target="11" />
+      <module name="wsdlex" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>

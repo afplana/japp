@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/aparser/aparser.iml" filepath="$PROJECT_DIR$/aparser/aparser.iml" />
       <module fileurl="file://$PROJECT_DIR$/japp.iml" filepath="$PROJECT_DIR$/japp.iml" />
       <module fileurl="file://$PROJECT_DIR$/rabbitmq/rabbitmq.iml" filepath="$PROJECT_DIR$/rabbitmq/rabbitmq.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wsdlex/wsdlex.iml" filepath="$PROJECT_DIR$/wsdlex/wsdlex.iml" />
     </modules>
   </component>
 </project>
