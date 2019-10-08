@@ -5,35 +5,37 @@ import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.DeliverCallback;
 
-import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.util.concurrent.TimeoutException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Worker {
+
     private static Logger logger = Logger.getLogger(Worker.class.getName());
     private final static String TASK_QUEUE_NAME = "Task_queue";
 
     public static void main(String[] args) {
+        SingleExecutor.getInstance().submit(() -> {
+            try {
+                startListen();
+            } catch (Exception e) {
+                logger.info(e.getLocalizedMessage());
+            }
+        });
+    }
+
+    private static void startListen() throws Exception {
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost("localhost");
 
-        try (final Connection connection = factory.newConnection()) {
-
+            final Connection connection = factory.newConnection();
             assert connection != null;
             final Channel channel = connection.createChannel();
             channel.queueDeclare(TASK_QUEUE_NAME, true, false, false, null);
             System.out.println("[*] Waiting for messages. Press CTRL+C to exit...");
-
             channel.basicQos(1);
-
             DeliverCallback deliverCallback = getDeliverCallback(channel);
-            channel.basicConsume(TASK_QUEUE_NAME, false, deliverCallback, consumerTag -> {
-            });
-        } catch (IOException | TimeoutException e) {
-            logger.log(Level.SEVERE, e.getMessage());
-        }
+            channel.basicConsume(TASK_QUEUE_NAME, false, deliverCallback, consumerTag -> {});
     }
 
     private static DeliverCallback getDeliverCallback(Channel channel) {

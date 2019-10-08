@@ -17,11 +17,12 @@ public class Sender {
     private static Logger logger = Logger.getLogger(Sender.class.getName());
     private final static String TASK_QUEUE_NAME = "Task_queue";
 
-    public static void main(String[] args) {
-        publishTask(args);
+    public void publish() {
+        Runnable publishTask = this::publishTask;
+        SingleExecutor.getInstance().submit(publishTask);
     }
 
-    private static void publishTask(String[] args) {
+    private synchronized void publishTask() {
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost("localhost");
 
@@ -37,6 +38,7 @@ public class Sender {
 
                 channel.basicPublish("", TASK_QUEUE_NAME,
                         MessageProperties.PERSISTENT_TEXT_PLAIN, msg.getBytes(StandardCharsets.UTF_8));
+                this.notifyAll();
                 logger.info("[x] Message sent '" + msg + "'");
                 logger.info("For exit the program enter CTRL+D \nPlease enter msg:");
             }

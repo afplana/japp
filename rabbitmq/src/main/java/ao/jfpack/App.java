@@ -1,6 +1,7 @@
 package ao.jfpack;
 
-import ao.jfpack.rabbitmq.pubsub.direct.ConsumeDirectBook;
+import ao.jfpack.rabbitmq.Sender;
+import ao.jfpack.rabbitmq.SingleExecutor;
 
 import java.util.logging.Logger;
 
@@ -10,6 +11,7 @@ import java.util.logging.Logger;
 public class App {
     private static Logger logger = Logger.getLogger(App.class.getName());
     public static void main(String[] args) {
-        ConsumeDirectBook.books.forEach(book -> logger.info("-> " + book.author + " " + book.synopses));
+        Sender sender = new Sender();
+        SingleExecutor.getInstance().execute(sender::publish);
     }
 }
