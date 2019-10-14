@@ -22,9 +22,9 @@
     <module>aparser</module>
             
     <module>rabbitmq</module>
-          
-    <module>wsdlex</module>
-      
+
+    <module>chllng</module>
+
   </modules>
   
 </project>
