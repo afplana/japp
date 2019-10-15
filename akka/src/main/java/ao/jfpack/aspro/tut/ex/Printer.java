@@ -1,4 +1,4 @@
-package ao.jfpack.aspro;
+package ao.jfpack.aspro.tut.ex;
 
 import akka.actor.AbstractActor;
 import akka.actor.Props;
@@ -15,17 +15,19 @@ public class Printer extends AbstractActor {
         return Props.create(Printer.class, Printer::new);
     }
 
-    public static class Greeting {
-        public final String msg;
-        public Greeting(String msg){
-            this.msg = msg;
-        }
-    }
-
     @Override
     public Receive createReceive() {
         return receiveBuilder()
                 .match(Greeting.class, greeting -> log.info(greeting.msg))
                 .build();
+    }
+
+
+
+    public static class Greeting {
+        public final String msg;
+        public Greeting(String msg){
+            this.msg = msg;
+        }
     }
 }

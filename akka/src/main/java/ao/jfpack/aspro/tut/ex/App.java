@@ -1,12 +1,9 @@
-package ao.jfpack;
+package ao.jfpack.aspro.tut.ex;
 
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
-import ao.jfpack.aspro.Greeter;
-import ao.jfpack.aspro.Printer;
 
 import java.io.IOException;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
@@ -16,7 +13,7 @@ public class App {
 
     private static Logger logger = Logger.getLogger(App.class.getName());
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         final ActorSystem system = ActorSystem.create("firstakka");
         try {
             final ActorRef printerActor = system.actorOf(Printer.props(), "printerActor");
@@ -39,8 +36,6 @@ public class App {
 
             logger.info("[!] Print ENTER to exit.");
             System.in.read();
-        } catch (IOException e) {
-            logger.log(Level.SEVERE, e.getLocalizedMessage());
         } finally {
             system.terminate();
         }

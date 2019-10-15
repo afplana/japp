@@ -1,4 +1,4 @@
-package ao.jfpack.aspro;
+package ao.jfpack.aspro.tut.ex;
 
 import akka.actor.AbstractActor;
 import akka.actor.ActorRef;
@@ -10,21 +10,10 @@ public class Greeter extends AbstractActor {
     private final ActorRef printerActor;
     private String greeting = "";
 
-    public Greeter(String msg, ActorRef printerActor){
-        this.msg = msg;
-        this.printerActor = printerActor;
-    }
 
     public static Props props(String msg, ActorRef printerActor){
         return Props.create(Greeter.class, () -> new Greeter(msg, printerActor));
     }
-
-    public static class WhoToGreet {
-        public final String who;
-        public WhoToGreet(String who){this.who = who;}
-    }
-
-    public static class Greet{public Greet(){}}
 
     @Override
     public Receive createReceive() {
@@ -32,5 +21,23 @@ public class Greeter extends AbstractActor {
                 .match(WhoToGreet.class, wtg -> this.greeting = msg + ", " + wtg.who)
                 .match(Greet.class, greet -> printerActor.tell(new Printer.Greeting(greeting), getSelf()))
                 .build();
+    }
+
+
+
+
+
+    public Greeter(String msg, ActorRef printerActor){
+        this.msg = msg;
+        this.printerActor = printerActor;
+    }
+
+    public static class WhoToGreet {
+        public final String who;
+        public WhoToGreet(String who){this.who = who;}
+    }
+
+    public static class Greet{
+        public Greet(){}
     }
 }
