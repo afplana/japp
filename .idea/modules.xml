@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/akka/akka.iml" filepath="$PROJECT_DIR$/akka/akka.iml" />
       <module fileurl="file://$PROJECT_DIR$/aparser/aparser.iml" filepath="$PROJECT_DIR$/aparser/aparser.iml" />
       <module fileurl="file://$PROJECT_DIR$/chllng/chllng.iml" filepath="$PROJECT_DIR$/chllng/chllng.iml" />
       <module fileurl="file://$PROJECT_DIR$/japp.iml" filepath="$PROJECT_DIR$/japp.iml" />

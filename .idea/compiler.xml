@@ -18,10 +18,12 @@
         <outputRelativeToContentRoot value="true" />
         <module name="rabbitmq" />
         <module name="aparser" />
+        <module name="akka" />
         <module name="chllng" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="11">
+      <module name="akka" target="1.7" />
       <module name="aparser" target="11" />
       <module name="chllng" target="11" />
       <module name="japp" target="1.5" />
