@@ -1,44 +1,61 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-        
+          
+  
   
   <modelVersion>4.0.0</modelVersion>
-        
+          
+  
   
   <groupId>ao.jfpack</groupId>
-        
+          
+  
   
   <artifactId>japp</artifactId>
-        
+          
+  
   
   <version>1.0-SNAPSHOT</version>
-        
+          
+  
   
   <name>Java Apps</name>
-        
+          
+  
   
   <url>https://github.com/afplana/japp</url>
-        
+          
+  
   
   <description>Java multi examples applications</description>
-        
+          
+  
   
   <packaging>pom</packaging>
-        
+          
+  
   
   <modules>
-                
+                    
+    
     
     <module>aparser</module>
-                
+                    
+    
     
     <module>rabbitmq</module>
-        
+            
+    
     <module>chllng</module>
-        
+            
+    
     <module>akka</module>
+          
+    
+    <module>dpatterns</module>
       
   </modules>
-    
+      
+
 
 </project>
