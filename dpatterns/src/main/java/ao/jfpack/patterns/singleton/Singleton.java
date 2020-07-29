@@ -1,17 +1,15 @@
 package ao.jfpack.patterns.singleton;
 
 import java.util.Objects;
+import java.util.logging.Logger;
 
 public class Singleton {
 
-    private String configPath;
-    private int configAmount;
-
     private static final Singleton instance = new Singleton();
 
+    Logger log = Logger.getLogger(this.getClass().getName());
+
     private Singleton(){
-        configPath = "/opt/";
-        configAmount = 1;
     }
 
     private static Singleton getInstance() {
@@ -20,11 +18,7 @@ public class Singleton {
         return instance;
     }
 
-    public void setConfigPath(String newPath) {
-        configPath = newPath;
-    }
-
-    public void setConfigAmount(int newAmount) {
-        configAmount = newAmount;
+    public void verify(String newPath) {
+        log.info("Instance created!");
     }
 }
