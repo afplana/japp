@@ -1,3 +1,3 @@
-ao\jfpack\App.class
-ao\jfpack\parse\ApacheLog.class
-ao\jfpack\parse\ApacheLogsSimpleParser.class
+ao/jfpack/parse/ApacheLog.class
+ao/jfpack/parse/ApacheLogsSimpleParser.class
+ao/jfpack/App.class
