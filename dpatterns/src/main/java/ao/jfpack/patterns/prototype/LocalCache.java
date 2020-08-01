@@ -41,7 +41,9 @@ public class LocalCache {
         Smartphone cloned_1 = (Smartphone) LocalCache.getSmartphone("1");
         Smartphone cloned_2 = (Smartphone) LocalCache.getSmartphone("2");
 
-        log.info("Smartphone : " + cloned_1.getType());
-        log.info("Smartphone : " + cloned_2.getType());
+        log.info("Smartphone: " + cloned_1.getType());
+        ((Iphone)cloned_1).load();
+        log.info("Smartphone: " + cloned_2.getType());
+        ((Android)cloned_2).load();
     }
 }
