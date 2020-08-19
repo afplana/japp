@@ -11,11 +11,10 @@ public class DataProcessorDecorator extends ValidationDecorator {
 
     @Override
     public String validate(byte[] bytes) throws ValidationException {
-        process(bytes);
-        return decorated.validate(bytes);
+        return process(bytes);
     }
 
-    private void process(byte[] bytes) {
-        System.out.println("Decorated: " + new String(bytes));
+    private String process(byte[] bytes) {
+        return ("Decorated: " + new String(bytes));
     }
 }

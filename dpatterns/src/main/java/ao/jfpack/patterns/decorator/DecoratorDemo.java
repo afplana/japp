@@ -9,6 +9,6 @@ public class DecoratorDemo {
         Validation<byte[], String> validation = new DataValidation();
         Validation<byte[], String> decorated = new DataProcessorDecorator(validation);
 
-        System.out.println(decorated.validate("this".getBytes()));
+        System.out.println(decorated.validate("Data to validate".getBytes()));
     }
 }

@@ -10,6 +10,6 @@ public class ChecksumValidation implements Validation<byte[], String> {
     @Override
     public String validate(byte[] bytes) throws ValidationException{
         log.info("Validating checksum!");
-        return null;
+        return new String(bytes);
     }
 }
