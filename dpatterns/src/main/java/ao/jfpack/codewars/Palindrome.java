@@ -1,4 +1,4 @@
-package ao.jfpack.algorithm;
+package ao.jfpack.codewars;
 
 import java.util.Scanner;
 
