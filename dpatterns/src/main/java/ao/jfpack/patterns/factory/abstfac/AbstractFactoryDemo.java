@@ -1,4 +1,4 @@
-package ao.jfpack.patterns.factory;
+package ao.jfpack.patterns.factory.abstfac;
 
 import ao.jfpack.patterns.entity.Contract;
 import ao.jfpack.patterns.entity.Organisation;

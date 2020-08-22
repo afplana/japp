@@ -1,4 +1,4 @@
-package ao.jfpack.patterns.factory;
+package ao.jfpack.patterns.factory.abstfac;
 
 public class FactoryProvider {
 
