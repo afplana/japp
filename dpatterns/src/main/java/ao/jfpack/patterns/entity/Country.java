@@ -1,7 +1,7 @@
 package ao.jfpack.patterns.entity;
 
 public class Country extends BaseEntity {
-    public long id;
+
     public String name;
 
     public Country(long id, String name) {
@@ -15,6 +15,6 @@ public class Country extends BaseEntity {
 
     @Override
     public String toJson() {
-        return "{ id: "+id+ ", name: "+name+" }";
+        return "{ id: "+id+ ", name: '"+name+"' }";
     }
 }
