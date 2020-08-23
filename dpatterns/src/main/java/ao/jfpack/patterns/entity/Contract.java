@@ -3,8 +3,8 @@ package ao.jfpack.patterns.entity;
 import java.time.OffsetDateTime;
 
 public class Contract {
-    long id;
-    OffsetDateTime signedDate;
+    public long id;
+    public OffsetDateTime signedDate;
 
     public Contract(long id) {
         this.id = id;

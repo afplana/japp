@@ -3,8 +3,8 @@ package ao.jfpack.patterns.entity;
 import java.util.Objects;
 
 public class Organisation {
-    long id;
-    District district;
+    public long id;
+    public District district;
 
     public Organisation(long id, District district) {
         this.id = id;
