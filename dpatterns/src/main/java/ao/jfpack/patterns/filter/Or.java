@@ -1,22 +1,21 @@
 package ao.jfpack.patterns.filter;
 
-import java.util.List;
+import java.util.Collection;
 
-public class Or<T> implements Criteria<T> {
+public class Or<T> implements Filter<T> {
 
-    private final Criteria<T> criteria;
-    private final Criteria<T> otherCriteria;
+    private final Filter<T> filter;
+    private final Filter<T> orFilter;
 
-    public Or(Criteria<T> criteria, Criteria<T> otherCriteria) {
-        this.criteria = criteria;
-        this.otherCriteria = otherCriteria;
+    public Or(Filter<T> filter, Filter<T> orFilter) {
+        this.filter = filter;
+        this.orFilter = orFilter;
     }
 
     @Override
-    public List<T> meetCriteria(List<T> list) {
-
-        List<T> first = criteria.meetCriteria(list);
-        List<T> other = otherCriteria.meetCriteria(list);
+    public Collection<T> apply(Collection<T> collection) {
+        Collection<T> first = filter.apply(collection);
+        Collection<T> other = orFilter.apply(collection);
 
         for (T t : other) {
             if(!first.contains(t)){

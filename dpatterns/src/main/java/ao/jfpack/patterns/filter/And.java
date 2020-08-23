@@ -1,20 +1,20 @@
 package ao.jfpack.patterns.filter;
 
-import java.util.List;
+import java.util.Collection;
 
-public class And<T> implements Criteria<T> {
+public class And<T> implements Filter<T> {
 
-    private final Criteria<T> criteria;
-    private final Criteria<T> otherCriteria;
+    private final Filter<T> filter;
+    private final Filter<T> andFilter;
 
-    public And(Criteria<T> criteria, Criteria<T> otherCriteria) {
-        this.criteria = criteria;
-        this.otherCriteria = otherCriteria;
+    public And(Filter<T> filter, Filter<T> andFilter) {
+        this.filter = filter;
+        this.andFilter = andFilter;
     }
 
     @Override
-    public List<T> meetCriteria(List<T> list) {
-        List<T> first = criteria.meetCriteria(list);
-        return otherCriteria.meetCriteria(first);
+    public Collection<T> apply(Collection<T> collection) {
+        Collection<T> first = filter.apply(collection);
+        return andFilter.apply(first);
     }
 }
