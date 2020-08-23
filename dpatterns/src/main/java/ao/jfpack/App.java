@@ -5,8 +5,8 @@ package ao.jfpack;
  *
  */
 public class App {
-
     public static void main(String[] arg) {
         // Used for concept tests
+
     }
 }

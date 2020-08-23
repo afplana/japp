@@ -1,5 +1,7 @@
 package ao.jfpack.patterns.adapter;
 
+import ao.jfpack.patterns.common.Response;
+
 import javax.net.ssl.SSLSession;
 import java.net.http.HttpResponse;
 import java.util.List;

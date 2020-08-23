@@ -1,5 +1,8 @@
 package ao.jfpack.patterns.adapter;
 
+import ao.jfpack.patterns.common.HttpResponseImpl;
+import ao.jfpack.patterns.common.Response;
+
 public class AdapterDemo {
 
     public static void main(String[] args) {

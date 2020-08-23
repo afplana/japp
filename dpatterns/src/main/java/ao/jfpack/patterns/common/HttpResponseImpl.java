@@ -1,4 +1,4 @@
-package ao.jfpack.patterns.adapter;
+package ao.jfpack.patterns.common;
 
 import javax.net.ssl.SSLSession;
 import java.net.URI;
