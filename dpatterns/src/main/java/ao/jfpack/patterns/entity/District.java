@@ -20,6 +20,7 @@ public class District extends BaseEntity {
 
     @Override
     public String toJson() {
-        return "{ id: " +id+ ", name: '" +name+ "', zip: '" +zip+ "', " +country.toJson()+ " }";
+        String country =  this.country == null ? "{}":this.country.toJson();
+        return "{ id: " +id+ ", name: '" +name+ "', zip: '" +zip+ "', " +country+ " }";
     }
 }

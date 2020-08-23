@@ -12,8 +12,7 @@ public class Palindrome {
         else if (word.charAt(0) != word.charAt(wordLength - 1))
             return false;
 
-        isPalindrome(word.substring(1, wordLength - 1));
-        return true;
+        return isPalindrome(word.substring(1, wordLength - 1));
     }
 
     public static void main(String... args) {
